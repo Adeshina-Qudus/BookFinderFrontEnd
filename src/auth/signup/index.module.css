@@ -1,0 +1,41 @@
+.signUpTable > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+.signUpTable > form > label{
+    font-size: 13px;
+    font-weight: normal;
+    justify-content: space-around;
+}
+.signUpTable > form >  input{
+    width: 350px;
+    height: 5vh;
+    border-radius: 8px;
+    justify-content: space-around;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+.submit{
+    background-color: #89b4f6;
+    width: 150px;
+    height: 9vh;
+    border-radius: 15px;
+    border-color: #89b4f6;
+    border-bottom-style: none;
+    margin-top: 10%;
+}
+.mainCont{
+    /*background-color: #b2d7e1;*/
+    background-image :linear-gradient(#89b4f6, #ef85ba, #89b4f6);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.signUpTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

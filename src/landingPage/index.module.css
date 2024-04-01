@@ -1,0 +1,18 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+    margin-top: 5%;
+}
+.buttonType{
+    background-color: #89b4f6;
+    border: solid 2px;
+    height: 8vh;
+    width: 150px;
+    border-radius: 10px;
+    margin-left: 50%;
+    margin-top: 7%;
+    justify-content: center;
+    align-items: center;
+}
