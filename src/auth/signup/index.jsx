@@ -1,6 +1,8 @@
 import style from "./index.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
+// import {useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom'
 const Signup =()=>{
     let url = "http://localhost:8080/api/v1/user/signUp";
     const [user,setUser] = useState({
@@ -9,6 +11,7 @@ const Signup =()=>{
         "password" : "",
         "confirmPassword":""
     })
+    const history = useHistory()
     const value =(e)=>{
         const {name, value} = e.target
         setUser({
@@ -28,6 +31,7 @@ const Signup =()=>{
              body: returnUser,
         }
         ).then((response)=> {
+            history.push(`/signIn?mail=${encodeURIComponent(returnUser.mail)}`)
              return response.json();
          }).then((value) =>{
                console.log(value.data.message)
