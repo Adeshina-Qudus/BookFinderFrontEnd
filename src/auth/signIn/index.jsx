@@ -1,5 +1,6 @@
 import style from "./index.module.css"
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 const SignIn = ()=>{
 
     let url = "http://localhost:8080/api/v1/user/signIn";
@@ -7,6 +8,7 @@ const SignIn = ()=>{
         "mail" :"",
         "password" : ""
     })
+    const navigate = useNavigate();
     // const [mail, setMail] = useState('');
     // const [password, setPassword] = useState('');
     const value = (e)=>{
@@ -21,6 +23,7 @@ const SignIn = ()=>{
     const handleSubmit = async (e)=>{
         // const returnUser = JSON.stringify({mail,password})
         const returnUser = JSON.stringify(user)
+        localStorage.setItem("mail",user.mail)
         e.preventDefault();
         await fetch(url,{
             method :"POST",
@@ -28,11 +31,11 @@ const SignIn = ()=>{
                 "Content-Type": "application/json",
             },
             body:returnUser
-
         }).then((response)=>{
             return response.json();
         }).then((value) =>{
             console.log(value.data.message)
+            navigate("/searchPage")
         }).catch((error) =>console.log(error))
     }
     return(

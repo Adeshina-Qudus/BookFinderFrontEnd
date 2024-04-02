@@ -1,8 +1,7 @@
 import style from "./index.module.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
-// import {useHistory} from 'react-router-dom';
-import {useHistory} from 'react-router-dom'
+
 const Signup =()=>{
     let url = "http://localhost:8080/api/v1/user/signUp";
     const [user,setUser] = useState({
@@ -11,7 +10,10 @@ const Signup =()=>{
         "password" : "",
         "confirmPassword":""
     })
-    const history = useHistory()
+    // const history = useHistory()
+
+    const navigate = useNavigate();
+
     const value =(e)=>{
         const {name, value} = e.target
         setUser({
@@ -31,10 +33,11 @@ const Signup =()=>{
              body: returnUser,
         }
         ).then((response)=> {
-            history.push(`/signIn?mail=${encodeURIComponent(returnUser.mail)}`)
+            // history.push(`/signIn?mail=${encodeURIComponent(returnUser.mail)}`)
              return response.json();
          }).then((value) =>{
                console.log(value.data.message)
+             navigate("/signIn")
          }).catch((error)=> console.log(error))
     }
     return(
@@ -61,10 +64,8 @@ const Signup =()=>{
                     <input type={"text"} className={style.value}
                            name={"confirmPassword"}
                            onChange={(e) => value(e)}/>
-                    {/*<Link to={"/signIn"}>*/}
-                        <button className={style.submit} type={"submit"}>
+                        <button className={style.submit} type={"submit"} >
                             Create An Account</button>
-                {/*</Link>*/}
                     <p>Already have an account ?<Link to={"/signIn"}>Sign in</Link></p>
                 </form>
             </div>

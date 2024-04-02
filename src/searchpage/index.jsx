@@ -1,13 +1,10 @@
 import style from "./index.module.css"
 import {useState} from "react";
-import SignIn from "../auth/signIn";
+
+
 const SearchPage = ()=>{
     let url = "http://localhost:8080/api/v1/user//searchBook";
-    let mail = SignIn.mail
-    const [title,setTitle] = useState({
-        "mail" : mail,
-        "title" :"",
-    })
+    const [title,setTitle] = useState("")
 
     const value = (e)=>{
         const {key,value} =e.target
@@ -33,7 +30,7 @@ const SearchPage = ()=>{
             console.log(value.data.message)
         ]).catch((error) => console.log(error))
     }
-    // let mail = SignIn.mail
+
     return(
         <div className={style.mainCont}>
             <div className={style.readingList}>
