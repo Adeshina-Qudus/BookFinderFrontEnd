@@ -5,6 +5,7 @@ import {useState} from "react";
 const SearchPage = ()=>{
     let url = "http://localhost:8080/api/v1/user/searchBook";
     const [title,setTitle] = useState("")
+
     const handleSubmit = async (e)=>{
         let obj = {
             "title": title,
@@ -25,10 +26,6 @@ const SearchPage = ()=>{
         }).catch((error) => console.log(error))
     }
 
-
-
-
-
     return(
         <div className={style.mainCont}>
             <div className={style.readingList}>
@@ -42,6 +39,7 @@ const SearchPage = ()=>{
                            placeholder={"Search Book "}/>
                     <button type={"submit"}>Search</button>
                 </form>
+                <div className={style.view}></div>
             </div>
         </div>
     )
