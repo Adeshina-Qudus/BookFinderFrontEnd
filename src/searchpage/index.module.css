@@ -1,0 +1,29 @@
+.mainCont{
+    background-image :linear-gradient(#89b4f6, #ef85ba, #89b4f6);
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
+/*.searchBar{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+.searchBar > form > input{
+    width: 500px;
+    height: 5vh;
+    border-radius: 4px;
+}
+.searchBar > form > button{
+    width: 70px;
+    height: 6vh;
+    border-radius: 4px;
+}
+.readingList{
+    height: 99.1vh;
+    border: solid  #ef85ba;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial Black", serif;
+}

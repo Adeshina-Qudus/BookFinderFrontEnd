@@ -12,8 +12,10 @@ const Navbar = ()=>{
                 <p>Feedback</p>
             </div>
             <div className={style.button}>
-                <FilledButton backGroundColor={"#FFFFFF"} text={"Sign In"} textColor={"black"}/>
-                <Link to={"signUp"}>
+                <Link to={"/signIn"}>
+                    <FilledButton backGroundColor={"#FFFFFF"}
+                                  text={"Sign In"} textColor={"black"}/></Link>
+                <Link to={"/signUp"}>
                     <OutlinedButton backGroundColor={"#FFFFFF"}
                                     text={"Sign Up"} lineColor={"pink"} textColor={"black"}/></Link>
                 {/*<Link to={"/sign-up"} className={style.linking}>Sign Up</Link>*/}
