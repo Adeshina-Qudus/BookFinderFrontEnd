@@ -36,8 +36,12 @@ const Signup =()=>{
             // history.push(`/signIn?mail=${encodeURIComponent(returnUser.mail)}`)
              return response.json();
          }).then((value) =>{
-               console.log(value.data.message)
-             navigate("/signIn")
+             if (value.successful){
+                 console.log(value.data.message)
+                 navigate("/signIn")
+             }else {
+                 alert(value.data.message)
+             }
          }).catch((error)=> console.log(error))
     }
     return(

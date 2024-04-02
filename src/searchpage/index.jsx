@@ -3,27 +3,31 @@ import {useState} from "react";
 
 
 const SearchPage = ()=>{
-    let url = "http://localhost:8080/api/v1/user//searchBook";
+    let url = "http://localhost:8080/api/v1/user/searchBook";
     const [title,setTitle] = useState("")
     const handleSubmit = async (e)=>{
-        const returnTitle = JSON.stringify(title)
         let obj = {
-            "title": returnTitle,
+            "title": title,
             "mail" : localStorage.getItem("mail")
         }
+        const returnTitle = JSON.stringify(obj)
         e.preventDefault();
         await fetch(url,{
             method :"POST",
             headers:{
                 "Content-Type": "application/json",
             },
-            body : obj
+            body : returnTitle
         }).then((response)=>{
             return response.json();
         }).then((response)=> {
-            console.log(response.data.message)
+            console.log(response.data.results[0])
         }).catch((error) => console.log(error))
     }
+
+
+
+
 
     return(
         <div className={style.mainCont}>

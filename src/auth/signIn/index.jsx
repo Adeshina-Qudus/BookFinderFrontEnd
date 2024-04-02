@@ -12,10 +12,10 @@ const SignIn = ()=>{
     // const [mail, setMail] = useState('');
     // const [password, setPassword] = useState('');
     const value = (e)=>{
-        const {key ,value}= e.target
+        const {name ,value}= e.target
         setUser({
             ...user,
-            [key] : value
+            [name] : value
         })
     }
 
@@ -34,8 +34,12 @@ const SignIn = ()=>{
         }).then((response)=>{
             return response.json();
         }).then((value) =>{
-            console.log(value.data.message)
-            navigate("/searchPage")
+            if(value.successful) {
+                console.log(value.data.message)
+                navigate("/searchPage")
+            }else {
+                alert(value.data.message)
+            }
         }).catch((error) =>console.log(error))
     }
     return(
@@ -45,12 +49,12 @@ const SignIn = ()=>{
                 <form onSubmit={(event) =>handleSubmit(event)}>
                     <label>Mail</label>
                     <input type={"text"}
-                           key={"mail"}
+                           name={"mail"}
                            onChange={(e) => value(e)}
                            className={style.inputValue}/>
                     <label>Password</label>
                     <input type={"text"}
-                           key={"password"}
+                           name={"password"}
                            onChange={(e) => value(e)}
                            className={style.inputValue} />
                     <button className={style.submit} type={"submit"}> SignIn</button>
