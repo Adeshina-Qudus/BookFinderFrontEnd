@@ -13,14 +13,15 @@ const Signup =()=>{
     let url = "http://localhost:8080/api/v1/user/signUp";
 
     const [isLoading,setIsLoading] = useState(false);
+
     const validationSchema = Yup.object().shape({
         name : Yup.string()
-            .matches(/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces')
-            .required("Name is required"),
+            .required("Name is required")
+            .matches(/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces'),
         mail :Yup.string()
+            .required('Email Address is required')
             .email("invalid email address")
-            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Must be a valid email Address')
-            .required('Email Address is required'),
+            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Must be a valid email Address'),
         password : Yup.string()
             .required("Password is required"),
         confirmPassword:Yup.string()

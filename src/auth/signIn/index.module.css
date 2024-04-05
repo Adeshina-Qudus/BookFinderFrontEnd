@@ -1,5 +1,4 @@
 .mainCont{
-    /*background-color: #b2d7e1;*/
     background-image :linear-gradient(#89b4f6, #ef85ba, #89b4f6);
     justify-content: center;
     align-items: center;
@@ -11,24 +10,17 @@
     align-items: center;
     flex-direction: column;
 }
-.signInTable > form{
+.signInTable > Form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-top: 5%;
 }
-.signInTable > form > label{
-    font-size: 13px;
-    font-weight: normal;
-    justify-content: space-around;
-}
-.signInTable > form >  input{
+.signInTable > Form > div > div> input{
     width: 350px;
     height: 5vh;
     border-radius: 8px;
-    justify-content: space-around;
-    border-bottom-style: none;
-    border-top-style: none;
+    margin: 1%;
 }
 .submit{
     background-color: #89b4f6;
