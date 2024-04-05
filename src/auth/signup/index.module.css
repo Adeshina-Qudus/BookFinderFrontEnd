@@ -1,21 +1,16 @@
-.signUpTable > form{
+.signUpTable > Form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-top: 5%;
-}
-.signUpTable > form > label{
     font-size: 13px;
     font-weight: normal;
-    justify-content: space-around;
+    column-gap: 5%;
 }
-.signUpTable > form >  input{
-    width: 350px;
+.signUpTable > Form > div > div> input{
+    width: 380px;
     height: 5vh;
-    border-radius: 8px;
-    justify-content: space-around;
-    border-bottom-style: none;
-    border-top-style: none;
+    border-radius: 12px;
 }
 .submit{
     background-color: #89b4f6;
