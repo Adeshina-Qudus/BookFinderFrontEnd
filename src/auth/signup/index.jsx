@@ -14,19 +14,24 @@ const Signup =()=>{
 
     const [isLoading,setIsLoading] = useState(false);
 
+    const [showPassword, setShowPassword] = useState(false);
+    const handlePasswordToggle = () =>{
+        setShowPassword(!showPassword)
+    }
+
     const validationSchema = Yup.object().shape({
         name : Yup.string()
-            .required("Name is required")
-            .matches(/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces'),
+            .matches(/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces')
+            .required("Name is required"),
         mail :Yup.string()
+            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Must be a valid email Address')
             .required('Email Address is required')
-            .email("invalid email address")
-            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Must be a valid email Address'),
+            .email("invalid email address"),
         password : Yup.string()
             .required("Password is required"),
         confirmPassword:Yup.string()
             .required("Confirm Password is required")
-    });
+    })
     // const history = useHistory()
     const navigate = useNavigate();
     const handleSubmit = async  (values,{resetForm}) =>{
@@ -79,7 +84,6 @@ const Signup =()=>{
             setIsLoading(false);
         }
     };
-
     return(
         <div className={style.mainCont}>
             <div className={style.signUpTable}>
@@ -92,12 +96,11 @@ const Signup =()=>{
                         password : "",
                         confirmPassword:""
                     }}
-                    vaidationSchema={validationSchema}
+                    validationSchema={validationSchema}
                     onSubmit={handleSubmit}
                     >
                     {({ values, errors , touched,
                           handleChange, handleBlur }) =>(
-
                         <Form>
                             <div className={style.inputSection}>
                                 <div>
@@ -109,7 +112,7 @@ const Signup =()=>{
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         style={{
-                                            borderColor: errors.name && touched.name ? "red" : "inherit",
+                                            borderColor: (errors.name && touched.name) ? "red" : "inherit",
                                         }}
                                     />
                                     {errors.name && touched.name && (
@@ -134,9 +137,9 @@ const Signup =()=>{
                                     )}
                                 </div>
 
-                                <div>
+                                <div style={{ position: 'relative' }}>
                                     <Field
-                                        type="text"
+                                        type={showPassword ? 'text' : 'password'}
                                         name="password"
                                         placeholder="Password"
                                         value={values.password}
@@ -146,6 +149,19 @@ const Signup =()=>{
                                             borderColor: errors.password && touched.password ? "red" : "inherit",
                                         }}
                                     />
+                                    <span
+                                        style={{
+                                            position: 'absolute',
+                                            top: '45%',
+                                            right: '10px',
+                                            transform: 'translateY(-50%)',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={handlePasswordToggle}
+                                        aria-label={showPassword ? "Hide password" : "Show password"}
+                                    >
+                                          {showPassword ? '👁️‍🗨️' : '👁️'}
+                                        </span>
                                     {errors.password && touched.password && (
                                         <div className={style.error}>{errors.password}</div>
                                     )}
