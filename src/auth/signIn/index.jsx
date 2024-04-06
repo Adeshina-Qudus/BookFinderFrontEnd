@@ -13,6 +13,11 @@ const SignIn = ()=>{
 
     const [isLoading,setIsLoading] = useState(false)
 
+    const [showPassword, setShowPassword] = useState(false);
+    const handlePasswordToggle = () =>{
+        setShowPassword(!showPassword)
+    }
+
     const navigate = useNavigate();
 
     const validationSchema = Yup.object().shape({
@@ -104,9 +109,9 @@ const SignIn = ()=>{
                                     )}
                                 </div>
 
-                                <div>
+                                <div style={{position: 'relative'}}>
                                     <Field
-                                        type="text"
+                                        type={showPassword ? 'text' : 'password'}
                                         name="password"
                                         placeholder="Password"
                                         value={values.password}
@@ -116,6 +121,19 @@ const SignIn = ()=>{
                                             borderColor: errors.password && touched.password ? "red" : "inherit",
                                         }}
                                     />
+                                    <span
+                                        style={{
+                                            position: 'absolute',
+                                            top: '45%',
+                                            right: '10px',
+                                            transform: 'translateY(-50%)',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={handlePasswordToggle}
+                                        aria-label={showPassword ? "Hide password" : "Show password"}
+                                    >
+                                          {showPassword ? '👁️‍🗨️' : '👁️'}
+                                        </span>
                                     {errors.password && touched.password && (
                                         <div className={style.error}>{errors.password}</div>
                                     )}
@@ -128,10 +146,10 @@ const SignIn = ()=>{
                                         <div className={"flex items-center justify-center"}>
                                             <Icon width={24} height={24} icon={loadingLoop}/>
                                         </div>
-                                    ):(
+                                    ) : (
                                         "SignIn"
                                     )}
-                                    </button>
+                                </button>
                             </div>
                         </Form>
                     )}

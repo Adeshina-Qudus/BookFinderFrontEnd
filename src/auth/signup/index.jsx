@@ -167,7 +167,7 @@ const Signup =()=>{
                                     )}
                                 </div>
 
-                                <div>
+                                <div style={{position: 'relative'}}>
                                     <Field
                                         type="text"
                                         name="confirmPassword"
@@ -179,13 +179,26 @@ const Signup =()=>{
                                             borderColor: errors.confirmPassword && touched.confirmPassword ? "red" : "inherit",
                                         }}
                                     />
+                                    <span
+                                        style={{
+                                            position: 'absolute',
+                                            top: '45%',
+                                            right: '10px',
+                                            transform: 'translateY(-50%)',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={handlePasswordToggle}
+                                        aria-label={showPassword ? "Hide password" : "Show password"}
+                                    >
+                                          {showPassword ? '👁️‍🗨️' : '👁️'}
+                                        </span>
                                     {errors.confirmPassword && touched.confirmPassword && (
                                         <div className={style.error}>{errors.confirmPassword}</div>
                                     )}
                                 </div>
 
                             </div>
-                                <div className={style.button}>
+                            <div className={style.button}>
                                 <button className={style.submit} type={"submit"}>
                                     {isLoading ? (
                                         <div className="flex items-center justify-center">
@@ -195,7 +208,7 @@ const Signup =()=>{
                                         "Create An  Account"
                                     )}
                                 </button>
-                                    <p>Already have an account ?<Link to={"/signIn"}>Sign in</Link></p>
+                                <p>Already have an account ?<Link to={"/signIn"}>Sign in</Link></p>
                                 </div>
                         </Form>
                     )}
