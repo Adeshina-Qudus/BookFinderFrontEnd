@@ -56,7 +56,8 @@ const Signup =()=>{
                     progress: undefined,
                 });
                 setIsLoading(false);
-                navigate("/signIn")
+                const mail = values.mail
+                navigate("/signIn" , {mail})
                 resetForm();
             }else {
                 toast.error('Account Not Created. Please try again', {

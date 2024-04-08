@@ -7,6 +7,8 @@ import {toast, ToastContainer} from "react-toastify";
 import {Field, Form, Formik} from "formik";
 import {Icon} from "@iconify/react";
 import loadingLoop from "@iconify/icons-line-md/loading-loop";
+// import {useLocation} from "react-router-dom";
+
 const SignIn = ()=>{
 
     let url = "http://localhost:8080/api/v1/user/signIn";
@@ -14,6 +16,9 @@ const SignIn = ()=>{
     const [isLoading,setIsLoading] = useState(false)
 
     const [showPassword, setShowPassword] = useState(false);
+
+    // const location = useLocation();
+    // const defaultMail = location.state && location.state.mail;
     const handlePasswordToggle = () =>{
         setShowPassword(!showPassword)
     }
@@ -21,8 +26,6 @@ const SignIn = ()=>{
     const navigate = useNavigate();
 
     const validationSchema = Yup.object().shape({
-        mail :Yup.string()
-            .required('Email Address is required'),
         password : Yup.string()
             .required("Password is required"),
     })
@@ -31,6 +34,7 @@ const SignIn = ()=>{
         try{
             setIsLoading(true);
             const payload = {
+                // mail : {defaultMail},
                 mail : values.mail,
                 password : values.password
             };
@@ -83,6 +87,7 @@ const SignIn = ()=>{
                 <Formik
                     initialValues={{
                         mail : "",
+                        // mail : {mail: defaultMail},
                         password : "",
                     }}
                     validationSchema={validationSchema}
@@ -97,11 +102,13 @@ const SignIn = ()=>{
                                         type="text"
                                         name="mail"
                                         placeholder="Enter Your Mail"
-                                        value={values.name}
+                                        // value={defaultMail}
+                                        value={values.mail}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         style={{
                                             borderColor: errors.mail && touched.mail ? "red" : "inherit",
+
                                         }}
                                     />
                                     {errors.mail && touched.mail && (
