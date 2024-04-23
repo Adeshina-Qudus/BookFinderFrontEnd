@@ -16,3 +16,9 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 760px) {
+    .image {
+        display: none;
+    }
+}

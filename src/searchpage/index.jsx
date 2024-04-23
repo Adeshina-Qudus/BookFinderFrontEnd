@@ -1,5 +1,5 @@
 import style from "./index.module.css"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 // import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -14,17 +14,17 @@ const SearchPage = ()=>{
         addBook(updated);
     }
 
-    const handleSubmit = async (values,{resetForm}) =>{
-
+    const handleSubmit = async (event) =>{
+        event.preventDefault()
         try {
             const payload = {
                 mail: localStorage.getItem("mail"),
-                title: values.title
+                title: title
             }
             const response = await axios.post(url,payload)
             AddBook(response.data)
             console.log(response.data)
-            resetForm()
+            setTitle("")
         }catch (error){
             console.log(error)
         }
@@ -35,14 +35,14 @@ const SearchPage = ()=>{
                         return(
                             <div>
                             <h4 key={value.id}>{value.title}</h4>
-                                <img key={value.id} src={value.image} alt={"link"}/>
+                                <img src={value.image} alt={"link"}/>
                             </div>
                         )
                     })}
             <div className={style.searchBar}>
                 <form onSubmit={(event)=> handleSubmit}>
                     <input type={"text"}
-                           key={"title"}
+                           value={title}
                            onChange={(e) => setTitle(e.target.value)}
                            placeholder={"Search Book "}/>
                     <button type={"submit"}
