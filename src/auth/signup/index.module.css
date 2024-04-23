@@ -8,10 +8,9 @@
     column-gap: 5%;
 }
 .signUpTable > Form > div > div> input{
-    width: 380px;
+    width: 370px;
     height: 5vh;
     border-radius: 12px;
-    margin: 1%;
 }
 .submit{
     background-color: #89b4f6;
@@ -35,4 +34,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+@media screen  and (max-width: 760px){
+    .mainCont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
