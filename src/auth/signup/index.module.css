@@ -29,6 +29,12 @@
     align-items: center;
     height: 100vh;
 }
+.inputSection{
+    display: flex;
+    flex-direction: column;
+    justify-content : space-between;
+    align-content: space-between;
+}
 .signUpTable{
     display: flex;
     justify-content: center;
