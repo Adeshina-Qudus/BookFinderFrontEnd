@@ -2,7 +2,7 @@
     background-image :linear-gradient(#89b4f6, #ef85ba, #89b4f6);
     display: flex;
     flex-direction: column;
-    gap: 20%;
+    /*gap: 20%;*/
     /*justify-content: center;*/
     align-items: center;
     height: 100vh;
@@ -24,6 +24,11 @@
     border-radius: 4px;
     border-color: #ef85ba;
 }
+.searchBar > form {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
 .readingList{
     height: 99.1vh;
     border: solid  #ef85ba;
@@ -31,4 +36,22 @@
     justify-content: center;
     align-items: center;
     font-family: "Arial Black", serif;
+}
+
+@media screen and (max-width: 760px) {
+    .searchBar > form > input{
+        width: 220px;
+        height: 5vh;
+        border-radius: 10px;
+        border-color: #ef85ba;
+    }
+    .searchBar > form > button{
+        width: 70px;
+        height: 5vh;
+        border-radius: 10px;
+        border-color: #ef85ba;
+    }
+    .mainCont{
+
+    }
 }

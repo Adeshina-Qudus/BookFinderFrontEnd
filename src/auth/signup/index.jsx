@@ -41,7 +41,6 @@ const Signup =()=>{
                 mail: values.mail,
                 name : values.name,
                 password:values.password,
-                confirmPassword :values.confirmPassword
             };
             const response = await  axios.post(url,payload);
             console.log(response)
